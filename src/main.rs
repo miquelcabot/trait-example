@@ -1,13 +1,14 @@
 mod step1;
 mod step2;
 mod step3;
+mod step4;
 
 fn main() {
     println!("Hello, world!");
 }
 
 #[test]
-fn test_step1() {
+fn test_step_1() {
     let mut balances = step1::BalancesModule::new();
 
     balances.set_balance(1, 100);
@@ -29,7 +30,7 @@ fn test_step1() {
 }
 
 #[test]
-fn test_step2() {
+fn test_step_2() {
     let mut balances = step2::BalancesModule::new();
 
     balances.set_balance(1, 100);
@@ -76,3 +77,22 @@ fn test_step_3() {
 // 	voting.vote(user_1, 0, true);
 // 	voting.vote(user_2, 0, false);
 // }
+
+#[test]
+fn test_step_4() {
+    type AccountId = u32;
+    type Balance = u32;
+    type VoteIndex = u8;
+
+    let user_1: AccountId = 1;
+    let user_2: AccountId = 2;
+
+    let mut balances = step4::BalancesModule::<AccountId, Balance>::new();
+    let mut voting = step4::VotingModule::<AccountId, VoteIndex>::new();
+
+    balances.set_balance(user_1, 100);
+    balances.set_balance(user_2, 200);
+
+    voting.vote(user_1, 0, true);
+    voting.vote(user_2, 0, false);
+}
