@@ -3,11 +3,11 @@ use std::collections::HashMap;
 type Account = u16;
 type Balance = u32;
 
-pub struct BalanceModule {
+pub struct BalancesModule {
     balances: HashMap<Account, Balance>,
 }
 
-impl BalanceModule {
+impl BalancesModule {
     pub fn new() -> Self {
         Self {
             balances: HashMap::new(),

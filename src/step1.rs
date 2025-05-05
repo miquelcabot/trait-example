@@ -1,10 +1,10 @@
 use std::collections::HashMap;
 
-pub struct BalanceModule {
+pub struct BalancesModule {
     balances: HashMap<u32, u32>,
 }
 
-impl BalanceModule {
+impl BalancesModule {
     pub fn new() -> Self {
         Self {
             balances: HashMap::new(),

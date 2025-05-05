@@ -1,5 +1,6 @@
 mod step1;
 mod step2;
+mod step3;
 
 fn main() {
     println!("Hello, world!");
@@ -7,7 +8,7 @@ fn main() {
 
 #[test]
 fn test_step1() {
-    let mut balances = step1::BalanceModule::new();
+    let mut balances = step1::BalancesModule::new();
 
     balances.set_balance(1, 100);
     balances.set_balance(2, 200);
@@ -29,7 +30,7 @@ fn test_step1() {
 
 #[test]
 fn test_step2() {
-    let mut balances = step2::BalanceModule::new();
+    let mut balances = step2::BalancesModule::new();
 
     balances.set_balance(1, 100);
     balances.set_balance(2, 200);
