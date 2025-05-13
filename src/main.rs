@@ -2,6 +2,7 @@ mod step1;
 mod step2;
 mod step3;
 mod step4;
+mod step5;
 
 fn main() {
     println!("Hello, world!");
@@ -89,6 +90,28 @@ fn test_step_4() {
 
     let mut balances = step4::BalancesModule::<AccountId, Balance>::new();
     let mut voting = step4::VotingModule::<AccountId, VoteIndex>::new();
+
+    balances.set_balance(user_1, 100);
+    balances.set_balance(user_2, 200);
+
+    voting.vote(user_1, 0, true);
+    voting.vote(user_2, 0, false);
+}
+
+#[test]
+fn test_step_5() {
+    struct Runtime;
+    impl step5::Config for Runtime {
+        type AccountId = u32;
+        type Balance = u64;
+        type VoteIndex = u8;
+    }
+
+    let user_1: <Runtime as step5::Config>::AccountId = 1;
+    let user_2: <Runtime as step5::Config>::AccountId = 2;
+
+    let mut balances = step5::BalancesModule::<Runtime>::new();
+    let mut voting = step5::VotingModule::<Runtime>::new();
 
     balances.set_balance(user_1, 100);
     balances.set_balance(user_2, 200);
